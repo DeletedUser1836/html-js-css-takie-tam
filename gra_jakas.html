@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gra</title>
+
+    <style>
+        .zdjecia
+        {
+            width: 300px;
+            height: 300px;
+        }
+        .przycisk
+        {
+            width: 200px;
+            height: 50px;
+            background-color: greenyellow;
+            font-family: 'Comic Sans MS';
+        }
+        .p
+        {
+            font-size: 40px;
+            font-family: 'Comic Sans MS';
+        }
+        body
+        {
+            background-color: grey;
+        }
+    </style>
+</head>
+<body onload="kasyno()">
+    <img id="zdjecie1" class="zdjecia" src="" alt="zdj1">
+    <img id="zdjecie2" class="zdjecia" src="" alt="zdj2">
+    <img id="zdjecie3" class="zdjecia" src="" alt="zdj3">
+    <img id="zdjecie4" class="zdjecia" src="" alt="zdj4">
+    <img id="zdjecie5" class="zdjecia" src="" alt="zdj5">
+    <button id="Graj" onclick="kasyno()" class="przycisk">Graj</button>
+    <button id="Reset" onclick="reset()" class="przycisk">Resetuj</button>
+    <p id="punkty" class="p">0</p>
+    <p id="gier" class="p">0</p>
+    <p id="biedak"></p>
+
+    <script>
+        let obrazkiFajne = ['m4a1.png', 'usp.png','m4a4.png', 'ak47.png'];
+        var punkty = 100;
+        var gier = 0;
+        let biedak = 0;
+        
+        function losujZtablic(x)
+        {
+            let index = Math.floor(Math.random()*x.length);
+            return x[index];
+        }
+
+        function kasyno()
+        {
+            punkty-=15;
+            gier++;
+
+            if(punkty<=0)
+            {
+                biedak++;
+            }
+            if(biedak>=1)
+            {
+                document.getElementById("biedak").innerHTML = "Ale biedak!!1!!1";
+                document.getElementById("Graj").style.visibility = "hidden";
+            }
+
+            let zdjecie1 = losujZtablic(obrazkiFajne);
+            let zdjecie2 = losujZtablic(obrazkiFajne);
+            let zdjecie3 = losujZtablic(obrazkiFajne);
+            let zdjecie4 = losujZtablic(obrazkiFajne);
+            let zdjecie5 = losujZtablic(obrazkiFajne);
+
+            document.getElementById("zdjecie1").src = zdjecie1;
+            if(zdjecie1 == 'm4a1.png')
+            {
+                punkty++;
+            }
+            if(zdjecie1 =='usp.png')
+            {
+                punkty+= 2;
+            }
+            if(zdjecie1 == 'm4a4.png')
+            {
+                punkty+= 3;
+            }
+            if(zdjecie1 == 'ak47.png')
+            {
+                punkty++;
+            }
+            document.getElementById("zdjecie2").src = zdjecie2;
+            if(zdjecie2 == 'm4a1.png')
+            {
+                punkty++;
+            }
+            if(zdjecie2 == 'usp.png')
+            {
+                punkty+= 2;
+            }
+            if(zdjecie2 == 'm4a4.png')
+            {
+                punkty+= 3;
+            }
+            if(zdjecie2 == 'ak47.png')
+            {
+                punkty++;
+            }
+            document.getElementById("zdjecie3").src = zdjecie3;
+            if(zdjecie3 == 'm4a1.png')
+            {
+                punkty++;
+            }
+            if(zdjecie3 == 'usp.png')
+            {
+                punkty+= 2;
+            }
+            if(zdjecie3 == 'm4a4.png')
+            {
+                punkty+= 3;
+            }
+            if(zdjecie3 =='ak47.png')
+            {
+                punkty++;
+            }
+
+            document.getElementById("zdjecie4").src = zdjecie3;
+            if(zdjecie4 == 'm4a1.png')
+            {
+                punkty++;
+            }
+            if(zdjecie4 == 'usp.png')
+            {
+                punkty+= 2;
+            }
+            if(zdjecie4 == 'm4a4.png')
+            {
+                punkty+= 3;
+            }
+            if(zdjecie4 =='ak47.png')
+            {
+                punkty++;
+            }
+            
+            document.getElementById("zdjecie5").src = zdjecie5;
+            if(zdjecie5 == 'm4a1.png')
+            {
+                punkty++;
+            }
+            if(zdjecie5 == 'usp.png')
+            {
+                punkty+= 2;
+            }
+            if(zdjecie5 == 'm4a4.png')
+            {
+                punkty+= 3;
+            }
+            if(zdjecie5 =='ak47.png')
+            {
+                punkty++;
+            }
+            
+            
+            if(zdjecie1 == zdjecie2 && zdjecie1 == zdjecie3 && zdjecie2 == zdjecie3)
+            {
+                punkty+=10;
+            }
+
+            document.getElementById("punkty").innerHTML = punkty;
+            document.getElementById("gier").innerHTML = gier;
+        }
+
+        function reset()
+        {
+            document.getElementById("punkty").innerHTML = 100;
+            punkty = 100;
+            document.getElementById("gier").innerHTML = 0;
+            gier = 0;
+            biedak=0;
+            document.getElementById("Graj").style.visibility = "visible";
+            document.getElementById("biedak").innerHTML = "";
+        }
+
+    </script>
+</body>
+</html>
