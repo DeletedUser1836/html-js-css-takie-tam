@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiemń pier nożce</title>
+
+    <style>
+        body
+        {
+            background-color: grey;
+        }
+        #pa_gracz, #ka_gracz, #no_gracz
+        {
+            margin: 10px;
+            float: left;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        let gracz;
+        let komputer;
+        let wynik_gracz = 0;
+        let wynik_komputera = 0;
+        let klik = 0;
+        let tura = 0;
+        function losuj(y)
+        {
+            return Math.round(Math.random()*y+1);
+        }
+        function gra(x)
+        {
+            let los_komputera = losuj(3);
+            document.getElementById("ka_gracz").style.outline = "debil";
+            document.getElementById("pa_gracz").style.outline = "";
+            document.getElementById("no_gracz").style.outline = "";
+
+            //tu są wybory gracza
+            if(x == 'k')
+            {
+                document.getElementById("ka_gracz").style.outline = "6px inset red";
+                gracz = 1;
+            }
+            else if(x == 'p')
+            {
+                document.getElementById("pa_gracz").style.outline = "6px inset red";
+                gracz = 2;
+            }
+            else if(x == 'n')
+            {
+                document.getElementById("no_gracz").style.outline = "6px inset red";
+                gracz = 3;
+            }
+            //wyniki
+            
+            //sprawdzanie czy komputer wylosował to samo    
+            if(los_komputera == gracz)
+            {
+                wynik_gracz++;
+                wynik_komputera++;
+                tura++;
+            }
+            // 1 = kamien | 2 = papier | 3 = nożyce
+            if(los_komputera == 1)//komputer ma kamień
+            {
+                document.getElementById("komputer").innerHTML = "<img src=grafika/kamien2.PNG>";
+                if(gracz == 2)//gracz ma papier
+                {
+                    wynik_gracz++;
+                    tura++;
+                }
+                if(gracz == 3)//gracz ma nozyce
+                {
+                    wynik_komputera++;
+                    tura++;
+                }
+            }
+            if(los_komputera == 2)//komputer ma papier
+            {
+                document.getElementById("komputer").innerHTML = "<img src=grafika/papier2.PNG>";
+                if(gracz == 1)//gracz ma kamien
+                {
+                    wynik_komputera++;
+                    tura++;
+                }
+
+                if(gracz == 3)//gracz ma nozyce
+                {
+                    wynik_gracz++;
+                    tura++;
+                }
+            }
+            if(los_komputera == 3)//komputer ma nozyce
+            {
+                document.getElementById("komputer").innerHTML = "<img src=grafika/nozyce2.PNG>";
+                if(gracz == 1)//gracz ma kamien
+                {
+                    wynik_komputera++;
+                    tura++;
+                }
+                if(gracz == 2)//gracz ma papier
+                {
+                    wynik_gracz++;
+                    tura++;
+                }
+
+            }
+            //ostatetczny wynik
+            document.getElementById("wynikGracz").innerText = wynik_gracz;
+            document.getElementById("wynikKomputer").innerText = wynik_komputera;
+            if(tura == 5)
+            {
+                if(wynik_gracz > wynik_komputera)
+                {
+                    alert("WYGRAŁEŚ!!!!11!");
+                }
+                else if(wynik_gracz < wynik_komputera)
+                {
+                    alert("klęska :sob:");
+                }
+                else if(wynik_gracz == wynik_komputera)
+                {
+                    alert("remis");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="ka_gracz"><img src="grafika/kamien1.PNG" onclick="gra('k')"></div>
+    <div id="pa_gracz"><img src="grafika/papier1.png" onclick="gra('p')"></div>
+    <div id="no_gracz"><img src="grafika/nozyce1.PNG" onclick="gra('n')"></div>
+    <div id="komputer"></div>
+    <p id="wynikGracz" style="color: green; background-color: black; width: 30px; font-size: 45px;"></p>
+    <p id="wynikKomputer" style="color: blue; background-color: black; width: 30px; font-size: 45px;"></p>
+</body>
+</html>
