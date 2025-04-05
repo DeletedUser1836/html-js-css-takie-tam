@@ -1,2 +1,2 @@
-# html-js-css-takie-tam
-Robiłem jakieś rzeczy w html to czemu ich nie dodać?
+# Wisielec
+Jak nazwa wskazuje to jest wisielec, którego musze dokończyć
