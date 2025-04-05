@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>powies sie meszcczynza</title>
+
+        <style>
+        div {
+            background-color: grey;
+            border-color: greenyellow;
+            border-style: dotted;
+            border-width: 3px;
+            margin: 0px;
+        }
+
+        #lewo {
+            width: 54%;
+            height: 600px;
+            float: left;
+        }
+
+        #prawo {
+            width: 44%;
+            height: 600px;
+            float: right;
+        }
+
+        .przyciskiLiterki
+        {
+            height: 35px;
+            width: 35px;
+            font-size: 25px;
+        }
+        #prawogura
+        {
+            height: 400px;
+        }
+        </style>
+        <!-- SKRYPT↓↓↓↓↓↓↓↓↓↓↓↓ -->
+        <script>
+            var literki = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+            var hasla = ["LAMUS", "BAMBUS", "KOT", "JAKUB", "GLIZZY"];
+            function stworzKlawiature()
+            {
+                let pd = document.getElementById("prawodol");
+                for(let i = 0; i<literki.length; i++)
+                {
+                    pd.innerHTML += "<input type='button' value=" + literki[i] + " onclick='dzialajdawaj(" + literki[i] + ")' class='przyciskiLiterki'>";
+                }
+            }
+
+            function haslo()
+            {
+                let pg = document.getElementById("prawogura");
+                for(let i = 0; i <hasla[0].length; i++)
+                {
+                    pg.innerHTML += "<input type='button' id='b" + i +"' value='-'>";
+                }
+            }
+
+            function dzialajdawaj(z)
+            {
+                let licznik = 0;
+                let tmp;
+                let pg = document.getElementById("prawogura");
+                let l = document.getElementsById("lewy");
+                for(let i = 0; i < hasla[0].length; i++)
+                {
+                    if(hasla[i] == z)
+                    {
+                      document.getElementById("b"+i).value = z;
+                      tmp = true;
+                    }
+                }
+                document.getElementById('b'+ i).addEventListener("click", function() {
+                    if(!tmp && licznik < 10)
+                    {
+                      l.innerHTML = "<img src ='" + licznik + ".jpg>";
+                      licznik++;
+                    }
+                })
+            }
+
+            function laduj()
+            {
+                haslo();
+                stworzKlawiature();
+            }
+        </script>
+    </head>
+
+    <body onload="laduj()">
+
+
+        <div id="lewo">
+
+        </div>
+
+        <!-- pG-->
+        <div id="prawo">
+            <div id="prawogura">
+
+            </div>
+
+            <!-- pD-->
+
+            <div id="prawodol">
+
+            </div>
+        </div>
+    </body>
+</html>
