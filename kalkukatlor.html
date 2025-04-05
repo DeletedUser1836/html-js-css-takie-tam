@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Kakualaktokatr</title>
+      <script>
+        function kwadrat()
+        {
+            let liczba = document.getElementById('wyswietlacz').value;
+            let wynik = liczba * liczba;
+            document.getElementById('wyswietlacz').value = wynik;
+        }
+
+        function pierwiastek()
+        {
+            let kolejnaliczba = document.getElementById('wyswietlacz').value;
+            let jesczewynik = Math.sqrt(kolejnaliczba);
+            document.getElementById('wyswietlacz').value = jesczewynik;
+        }
+
+        function negacja()
+        {
+            let jakaszmienna = document.getElementById('wyswietlacz').value;
+            let wynikjesczejeden = jakaszmienna * -1;
+            console.log(wynikjesczejeden);
+            document.getElementById('wyswietlacz').value = wynikjesczejeden;
+        }
+      </script>
+
+    <style>
+        #formularzkaklukatorara
+        {
+            background-color: rgb(48, 115, 177);
+            width: 500px;
+            height: 600px;
+        }
+        .przyciski
+        {
+            width: 60px;
+            height: 60px;
+            font-size: 20px;
+            margin: 2px;
+        }
+        #wyswietlacz
+        {
+            width: 490px;
+            height: 40px;
+            font-size: 35px;
+        }
+  </style>
+  </head>
+  <body>
+    <form id="formularzkaklukatorara" name="f">
+        <!-- wyświetlacz -->
+        <input type="text" placeholder="Skalkuj coś" id="wyswietlacz" name="w">
+		<!-- Czyszczenie -->
+        <button type="button" id="oczyszcz" class="przyciski" onclick="f.w.value = ''"> CE </button>
+        <!-- Tu są liczby przyciski -->
+        <button type = "button" id="przycisk1" class="przyciski" onclick="f.w.value += 1"> 1 </button>
+        <button type = "button" id="przycisk2" class="przyciski" onclick="f.w.value += 2"> 2 </button>
+        <button type = "button" id="przycisk3" class="przyciski" onclick="f.w.value += 3"> 3 </button>
+        <button type = "button" id="przycisk4" class="przyciski" onclick="f.w.value += 4"> 4 </button>
+        <button type = "button" id="przycisk5" class="przyciski" onclick="f.w.value += 5"> 5 </button>
+        <button type = "button" id="przycisk6" class="przyciski" onclick="f.w.value += 6"> 6 </button>
+        <button type = "button" id="przycisk7" class="przyciski" onclick="f.w.value += 7"> 7 </button>
+        <button type = "button" id="przycisk8" class="przyciski" onclick="f.w.value += 8"> 8 </button>
+        <button type = "button" id="przycisk9" class="przyciski" onclick="f.w.value += 9"> 9 </button>
+        <button type = "button" id="przycisk0" class="przyciski" onclick="f.w.value += 0"> 0 </button>
+        <!-- Tu są manipulacje liczbami -->
+        <button type = "button" id="dodawanie" class="przyciski" onclick="f.w.value += '+'"> + </button>
+        <button type = "button" id="odejmowanie" class="przyciski" onclick="f.w.value += '-'"> - </button>
+        <button type = "button" id="dzielenie" class="przyciski" onclick="f.w.value += '/'"> : </button>
+        <button type="button" id="mnożenie" class="przyciski" onclick="f.w.value += '*'"> • </button>
+        <button type="button" id="kropka" class="przyciski" onclick="f.w.value += '.'"> . </button>
+        <!-- Dziwaki -->
+        <button type = "button" id="kwadratLiczby" class="przyciski" onclick="kwadrat()"> x<sup>2</sup> </button>
+        <button type = "button" id="PierwiastekKwadratowy" class="przyciski" onclick="pierwiastek()"> √x </button>
+        <button type = "button" id="negacja" class="przyciski" onclick="negacja()"> +/- </button>
+        <!-- Finał -->
+        <button type = "button" id="rownasie" onclick="f.w.value = eval(f.w.value)" class="przyciski"> = </button>
+        
+
+    </form>
+  </body>
+</html>
